@@ -20,5 +20,4 @@ class Card:
         else:
             return False
 
-print("a")
 
