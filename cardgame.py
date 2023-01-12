@@ -1,12 +1,15 @@
-from
+from deck_of_cards import DeckOfCards
+from player import Player
 class CardGame:
     def __init__(self, player1_name, player2_name, num_cards=26):
+        """a constructor of the cardgame"""
         self.deck = DeckOfCards()
         self.player1 = Player(player1_name, num_cards)
         self.player2 = Player(player2_name, num_cards)
         self.newgame()
 
     def newgame(self):
+        """"""
         self.deck.shuffle_card()
         self.player1.set_hand(self.deck)
         self.player2.set_hand(self.deck)

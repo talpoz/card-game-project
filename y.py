@@ -1,6 +1,5 @@
 import random
 
-
 class Card:
     def __init__(self, value, suit):
         self.value = value
@@ -27,9 +26,11 @@ class Card:
         else:
             return False
 
+    def __repr__(self):
+        """this function returns card details"""
+        return f"{self.suit}{self.value}"
 
 SUITS = ["diamonds", "spades", "hearts", "clubs"]
-
 
 class DeckOfCards:
     def __init__(self):
@@ -40,7 +41,6 @@ class DeckOfCards:
 
     def deal_one(self):
         return self.cards.pop()
-
 
 class Player:
     def __init__(self, name, number_of_cards=26):
