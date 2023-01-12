@@ -1,5 +1,4 @@
 from cardgame import CardGame
-
 player1_name = input("Enter the name of player 1: ")
 player2_name = input("Enter the name of player 2: ")
 game = CardGame(player1_name, player2_name)

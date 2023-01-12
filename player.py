@@ -1,4 +1,5 @@
 from random import randint
+from deck_of_cards import DeckOfCards
 class Player:
     def __init__(self, name, num_cards=26):
         self.name = name

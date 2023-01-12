@@ -3,11 +3,16 @@ class Card:
         self.value = value
         self.suit = suit
 
-    def __gt__(self, other_card):
-        if self.value > other_card.value:
-            return True
-        elif self.value == other_card.value:
-            if self.suit > other_card.suit:
+    def __gt__(self, other):
+        if self.value > other.value:
+            if self.value==1:
+                return True
+            if self.value == 1 and other.value != 1:
+                return True
+            if other.value == 1 and self.value != 1:
+                return True
+        elif self.value == other.value:
+            if self.suit > other.suit:
                 return True
             else:
                 return False
@@ -20,5 +25,5 @@ class Card:
         else:
             return False
 
-print("a")
+
 
