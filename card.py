@@ -2,6 +2,7 @@ class Card:
     def __init__(self, value, suit):
         self.value = value
         self.suit = suit
+        SUITS = ["diamonds", "spades", "hearts", "clubs"]
 
     def __gt__(self, other):
         if self.value > other.value:
