@@ -1,22 +1,15 @@
-
+from random import  randint
 from deck_of_cards import DeckOfCards
-# class Player:
-#     def __init__(self, name, num_cards=26):
-#         self.name = name
-#         self.num_cards = num_cards if 10 <= num_cards <= 26 else 26
-#         self.hand = []
-#
-#     def set_hand(self, deck):
-#         for i in range(self.num_cards):
-#             self.hand.append(deck.deal_one())
-#
-#     def get_card(self):
-#         return self.hand.pop(randint(0, len(self.hand) - 1))
-#
-#     def add_card(self, card):
-#         self.hand.append(card)
+from card import *
 class Player:
-    def __init__(self, name, number_of_cards=26):
+    def __init__(self, name, number_of_cards):
+        """A constructor of player"""
+        if type(name)!=str:
+            raise TypeError("name must to be a string")
+        if type(number_of_cards)!=int:
+            raise TypeError("number of cards must to be a int number")
+        if number_of_cards<=0:
+            raise ValueError("number of cards must to be a int and positive number")
         if number_of_cards > 26 or number_of_cards < 10:
             number_of_cards = 26
         self.name = name
@@ -24,11 +17,24 @@ class Player:
         self.number_of_cards = number_of_cards
 
     def set_hand(self, deck):
-        for _ in range(self.number_of_cards):
+        """This function getting deck of cards and gives for the player random cards according to number of cards for the game"""
+        if type(deck)!=DeckOfCards:
+            raise TypeError("deck must to be a type of deck of cards")
+        for i in range(self.number_of_cards):
             self.deck.append(deck.deal_one())
 
     def get_card(self):
-        return self.deck.pop()
+        """this function pull out random card from the player deck remove him from the deck and return the card"""
+        return self.deck.pop(randint(0, len(self.deck)-1))
 
     def add_card(self, card):
+        """This function add a card to the deck player"""
+        if type(card)!=Card:
+            raise TypeError("card must to be type of Card class")
+        if type(card.value)!=int:
+            raise TypeError("card value must to be a int number")
+        if card.value<=0 or card.value>13:
+            raise ValueError("card value must be between 1-13")
+        if type(card.suit)!=str:
+            raise TypeError("card suit must to be a string from the list of SUITS")
         self.deck.append(card)
