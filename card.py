@@ -5,6 +5,8 @@ class Card:
             raise TypeError("value must to be a int number")
         if type(suit)!=str:
             raise TypeError("suit must to be str from the list of SUITS")
+        # if type(suit)!=SUITS:
+        #     raise ValueError("suit must to be a string from the list of SUITS")
         if value<=0 or value>13:
             raise ValueError("value must to be a int number between 1-13")
         self.value = value
@@ -36,12 +38,12 @@ class Card:
         """this function comparing between one card and other if they have the same value and suit the function return True,else return False"""
         if type(other.value)!=int:
             raise TypeError("other value must be a int number")
-        if other<=0 or other>13:
+        if other.value<=0 or other.value>13:
             raise ValueError("other value must to be a int number between 1-13")
         if type(other.suit)!=str:
             raise TypeError("suit must to be a string from the list of SUITS")
-        if other.suit!=SUITS:
-            raise ValueError("suit must to be a string from the list of SUITS")
+        # if other.suit!=self.SUITS:
+        #     raise ValueError("suit must to be a string from the list of SUITS")
         if self.value == other.value and self.suit == other.suit:
             return True
         else:
