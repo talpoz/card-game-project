@@ -14,33 +14,82 @@ class TestCard(unittest.TestCase):
         self.assertEqual(self.card.suit, "Spades")
         self.assertIn("Hearts",self.SUITS)
 
-    def test_invalid_value_init(self):
-        """test case of invalid input value in init"""
+    def test_invalid_value_out_range_init(self):
+        """test case of invalid input value out of range in init"""
         with self.assertRaises(ValueError):
-            card = Card(15, "Spades")
+            card = Card(14, "Spades")
+        with self.assertRaises(ValueError):
+            card = Card(0, "Spades")
+        with self.assertRaises(ValueError):
+            card = Card(20, "Spades")
+        with self.assertRaises(ValueError):
+            card = Card(-1, "Spades")
+
+    def test_invalid_init_not_int_value(self):
+        """test invalid value that is not int"""
         with self.assertRaises(TypeError):
             card = Card("five", "Spades")
-    def test_invalid_suit_init(self):
+    def test_invalid_init_not_string_suit(self):
         """test case of invalid input suit in init"""
         with self.assertRaises(TypeError):
-            card=Card(0,8)
+            card = Card(5,6)
+    def test_init_invalid_negative_value(self):
+        """test case of negative value"""
+        with self.assertRaises(ValueError):
+            card=Card(-1,"Diamond")
 
     def test_eq_valid(self):
         """this test case check the valid of comparing one card to other and check if they are the same"""
         self.assertTrue(self.card==self.card)
         self.assertFalse(self.card == self.card2)
-    def test_eq_invalid(self):
+    def test_eq_invalid_value_not_int(self):
         """this test case is invalid input for eq function """
         with self.assertRaises(TypeError):
             self.card=="aaa"
+        with self.assertRaises(TypeError):
+            self.card==0.5
+    def test_eq_invalid_other_not_card(self):
+        with self.assertRaises(TypeError):
+            self.card==("aaa","bbb")
+        with self.assertRaises(TypeError):
+            self.card==(14,15)
+    def test_eq_invalid_value_out_range(self):
+        with self.assertRaises(ValueError):
+            card=Card(0,"Hearts")
+        with self.assertRaises(ValueError):
+            card=Card(14,"Spades")
+    def test_gt_invalid_suit_not_str(self):
+        with self.assertRaises(TypeError):
+            card=Card(3,7)
 
     def test_gt_valid(self):
         """this test case check the valid of comparing one card to other and check if the first are bigger"""
         self.assertTrue(self.card3>self.card2)
+        self.assertFalse(self.card > self.card3)
+        self.assertTrue(2,self.card)
+    def test_gt_invalid_not_int(self):
+        with self.assertRaises(TypeError):
+            self.card==''
+        with self.assertRaises(TypeError):
+            self.card==0.5
+    def test_gt_invalid_value_out_range(self):
+        with self.assertRaises(ValueError):
+            card = Card(14, "Spades")
+        with self.assertRaises(ValueError):
+            card = Card(0, "Spades")
+        with self.assertRaises(ValueError):
+            card = Card(20, "Spades")
+        with self.assertRaises(ValueError):
+            card = Card(-1, "Spades")
+    def test_gt_invalid_suit_not_str(self):
+        with self.assertRaises(TypeError):
+            card=Card(2,6)
 
     def test_gt_invalid(self):
         """this test case is invalid input for gt function"""
-        self.assertFalse(self.card>self.card3)
+        with self.assertRaises(TypeError):
+            self.card>Card(1,1)
+
 
 
 
