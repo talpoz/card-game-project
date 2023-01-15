@@ -28,10 +28,11 @@ class TestCard(unittest.TestCase):
     def test_eq_valid(self):
         """this test case check the valid of comparing one card to other and check if they are the same"""
         self.assertTrue(self.card==self.card)
-
+        self.assertFalse(self.card == self.card2)
     def test_eq_invalid(self):
         """this test case is invalid input for eq function """
-        self.assertFalse(self.card==self.card2)
+        with self.assertRaises(TypeError):
+            self.card=="aaa"
 
     def test_gt_valid(self):
         """this test case check the valid of comparing one card to other and check if the first are bigger"""

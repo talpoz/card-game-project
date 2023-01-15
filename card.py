@@ -36,14 +36,16 @@ class Card:
 
     def __eq__(self, other):
         """this function comparing between one card and other if they have the same value and suit the function return True,else return False"""
+        if type(other)!=Card:
+            raise TypeError("other must to be from type of card")
         if type(other.value)!=int:
             raise TypeError("other value must be a int number")
         if other.value<=0 or other.value>13:
             raise ValueError("other value must to be a int number between 1-13")
         if type(other.suit)!=str:
             raise TypeError("suit must to be a string from the list of SUITS")
-        # if other.suit!=self.SUITS:
-        #     raise ValueError("suit must to be a string from the list of SUITS")
+        if other.suit not in self.SUITS:
+            raise ValueError("suit must to be a string from the list of SUITS")
         if self.value == other.value and self.suit == other.suit:
             return True
         else:
