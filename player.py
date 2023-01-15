@@ -2,7 +2,7 @@ from random import  randint
 from deck_of_cards import DeckOfCards
 from card import *
 class Player:
-    def __init__(self, name, number_of_cards):
+    def __init__(self, name, number_of_cards=26):
         """A constructor of player"""
         if type(name)!=str:
             raise TypeError("name must to be a string")

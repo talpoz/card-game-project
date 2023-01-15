@@ -1,8 +1,9 @@
 from cardgame import *
 if __name__ == "__main__":
+    number_of_cards=int(input("enter number here:"))
     player1_name = input("Enter the name of the first player: ")
     player2_name = input("Enter the name of the second player: ")
-    game = CardGame(player1_name, player2_name)
+    game = CardGame(player1_name, player2_name,number_of_cards)
 
     for i in range(10):
         card1 = game.player1.get_card()
