@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/.idea/card_game_project.iml" filepath="$PROJECT_DIR$/.idea/card_game_project.iml" />
+=======
       <module fileurl="file://$PROJECT_DIR$/.idea/card-game-project.iml" filepath="$PROJECT_DIR$/.idea/card-game-project.iml" />
+>>>>>>> origin/main
     </modules>
   </component>
 </project>
