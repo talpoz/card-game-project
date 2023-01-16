@@ -46,20 +46,21 @@ class TestCard(unittest.TestCase):
         """this test case check the valid of comparing one card to other and check if they are the same"""
         self.assertTrue(self.card == self.card)
         self.assertFalse(self.card == self.card2)
+        self.assertIn(self.card.suit,self.SUITS)
 
     def test_eq_invalid_suit_not_int(self):
         """this test case is invalid value not int for eq function """
         with self.assertRaises(TypeError):
-            self.card == (5,"aaa")
+            self.card == (5," ")
         with self.assertRaises(TypeError):
             self.card == Card(3,0.5)
 
-    def test_eq_invalid_other_not_card(self):
+    def test_eq_invalid_not_card(self):
         """this test case is invalid card example"""
         with self.assertRaises(TypeError):
-            self.card == ("aaa", "bbb")
+            self.card == Card("aaa", "bbb")
         with self.assertRaises(TypeError):
-            self.card == (14, 15)
+            self.card == Card(14, 15)
 
     def test_eq_invalid_value_out_range(self):
         """this test case is invalid value out of range"""
@@ -77,7 +78,7 @@ class TestCard(unittest.TestCase):
         """this test case check the valid of comparing one card to other and check if the first are bigger"""
         self.assertTrue(self.card3 > self.card2)
         self.assertFalse(self.card > self.card3)
-        self.assertTrue(5, self.card)
+        self.assertTrue(5, self.card.suit)
 
     def test_gt_invalid_value_not_int(self):
         """test case of invalid card that not int number"""

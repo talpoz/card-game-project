@@ -4,7 +4,7 @@ from card import *
 
 
 class Player:
-    def __init__(self, name, number_of_cards=26):
+    def __init__(self, name, number_of_cards):
         """A constructor of player"""
         if type(name) != str:
             raise TypeError("name must to be a string")
@@ -31,7 +31,7 @@ class Player:
 
     def get_card(self):
         """this function pull out random card from the player deck remove him from the deck and return the card"""
-        if len(self.deck) == 0:
+        if len(self.deck) <= 0:
             raise ValueError("the deck must to be a int number>0")
         return self.deck.pop(randint(0, len(self.deck) - 1))
 

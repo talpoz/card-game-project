@@ -12,11 +12,11 @@ class TestDeckOfCards(unittest.TestCase):
     def test_init_valid(self):
         """test case of valid init"""
         self.assertEqual(len(self.deck.cards), 52)
-        self.assertIn(Card(2, 'Hearts'), self.deck.cards)
+        self.assertIn(Card(1, 'Hearts'), self.deck.cards)
         self.assertTrue(Card(13, "Hearts"), self.deck.cards)
 
     def test_init_invalid_with_value_input(self):
-        """test case with invalid value input """
+        """test case with invalid value input to init"""
         with self.assertRaises(TypeError):
             self.deck = DeckOfCards(["hearts", "Diamonds"])
         with self.assertRaises(TypeError):

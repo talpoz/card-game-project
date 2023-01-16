@@ -40,7 +40,7 @@ class TestPlayer(unittest.TestCase):
         self.assertEqual(len(self.player.deck), len(self.player2.deck))
 
     def test_set_hand_valid_mock(self):
-        """this test case checks that the function adds the card from the deck to the player"""
+        """this test case checks that the function adds the cards from the deck to the player"""
         with patch('deck_of_cards.DeckOfCards.deal_one') as mock_rand:
             mock_rand.return_value = Card(6, "Diamonds")
             player = Player("tal", 26)
@@ -49,7 +49,7 @@ class TestPlayer(unittest.TestCase):
             self.assertEqual(player.deck[0], Card(6, "Diamonds"))
 
     def test_set_hand_invalid_type(self):
-        """test case checking """
+        """test case checking invalid special type for set hand method """
         with self.assertRaises(TypeError):
             self.player.set_hand({})
 
@@ -63,11 +63,14 @@ class TestPlayer(unittest.TestCase):
     def test_get_card_valid(self):
         """valid test cases of get card method"""
         player = Player("tal", 26)
+        player2 = Player("amit",26)
         deck = DeckOfCards()
         player.set_hand(deck)
+        player2.set_hand(deck)
         card = player.get_card()
         self.assertEqual(type(card), Card)
         self.assertEqual(len(player.deck), 25)
+        self.assertEqual(len(player2.deck),26)
 
     def test_get_card_invalid_empty_deck(self):
         with self.assertRaises(ValueError):
@@ -78,10 +81,13 @@ class TestPlayer(unittest.TestCase):
 
     def test_add_card_valid(self):
         """valid test cases of add card method"""
+        player=Player("tal",13)
         card = self.deck.deal_one()
-        self.player.add_card(card)
+        for i in range(14):
+            self.player.add_card(card)
         self.assertIn(card, self.player.deck)
         self.assertTrue(self.player, DeckOfCards)
+        self.assertEqual(len(self.player.deck),14)
 
     def test_invalid_input_add_card_type_not_int(self):
         """test case of value as string and not number"""
