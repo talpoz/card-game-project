@@ -11,7 +11,8 @@ class DeckOfCards:
         """this function mixing the cards in the deck"""
         random.shuffle(self.cards)
     def deal_one(self):
-        """this function pull out one random card from the deck remove him from the deck and return the card to the program """
+        """this function pull out one random card from the cards remove him from the deck and return the
+        card to the program """
         if len(self.cards)<=0:
-            raise ValueError("cards cant be length of 0")
+            raise ValueError("cards cant be length of 0 or negative number")
         return self.cards.pop(random.randint(0, len(self.cards)-1))

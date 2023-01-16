@@ -4,6 +4,7 @@ from card import Card
 import unittest
 from unittest.mock import patch
 
+
 class TestPlayer(unittest.TestCase):
     def setUp(self):
         """A constructor of test case player"""
@@ -15,6 +16,7 @@ class TestPlayer(unittest.TestCase):
         """test cases of valid init constructor"""
         self.assertEqual(self.player.name, "tal")
         self.assertEqual(self.player.number_of_cards, 26)
+        self.assertTrue("amit",self.player2.name)
 
     def test_invalid_input_init_name_not_int(self):
         """test case of name not string"""
@@ -29,7 +31,7 @@ class TestPlayer(unittest.TestCase):
     def test_invalid_input_init_number_of_cards_negative_number(self):
         """test case of invalid negative number of cards """
         with self.assertRaises(ValueError):
-            player = Player("tal", -5)
+            player = Player("amit", -5)
 
     def test_set_hand_valid(self):
         """test case of valid set hand method that need to bring between 10-26"""
@@ -52,6 +54,7 @@ class TestPlayer(unittest.TestCase):
             self.player.set_hand({})
 
     def test_set_hand_invalid_empty_deck(self):
+        """this test case checking what happend when the deck is empty"""
         with self.assertRaises(ValueError):
             self.player.set_hand(self.deck)
             self.player.set_hand(self.deck)
