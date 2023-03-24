@@ -8,15 +8,15 @@ from unittest.mock import patch
 class TestPlayer(unittest.TestCase):
     def setUp(self):
         """A constructor of test case player"""
-        self.player = Player("tal", 26)
-        self.player2 = Player("amit", 26)
+        self.player = Player("Tal", 26)
+        self.player2 = Player("Pozniak", 26)
         self.deck = DeckOfCards()
 
     def test_init_valid(self):
         """test cases of valid init constructor"""
-        self.assertEqual(self.player.name, "tal")
+        self.assertEqual(self.player.name, "Tal")
         self.assertEqual(self.player.number_of_cards, 26)
-        self.assertTrue("amit",self.player2.name)
+        self.assertTrue("Pozniak",self.player2.name)
 
     def test_invalid_input_init_name_not_int(self):
         """test case of name not string"""
@@ -26,12 +26,12 @@ class TestPlayer(unittest.TestCase):
     def test_invalid_input_init_number_of_cards(self):
         """test case of invalid input not int number """
         with self.assertRaises(TypeError):
-            player = Player("tal", "twenty six")
+            player = Player("Tal", "twenty six")
 
     def test_invalid_input_init_number_of_cards_negative_number(self):
         """test case of invalid negative number of cards """
         with self.assertRaises(ValueError):
-            player = Player("amit", -5)
+            player = Player("Pozniak", -5)
 
     def test_set_hand_valid(self):
         """test case of valid set hand method that need to bring between 10-26"""
@@ -43,7 +43,7 @@ class TestPlayer(unittest.TestCase):
         """this test case checks that the function adds the cards from the deck to the player"""
         with patch('deck_of_cards.DeckOfCards.deal_one') as mock_rand:
             mock_rand.return_value = Card(6, "Diamonds")
-            player = Player("tal", 26)
+            player = Player("Tal", 26)
             player.set_hand(self.deck)
             self.assertEqual(len(player.deck), 26)
             self.assertEqual(player.deck[0], Card(6, "Diamonds"))
@@ -62,8 +62,8 @@ class TestPlayer(unittest.TestCase):
 
     def test_get_card_valid(self):
         """valid test cases of get card method"""
-        player = Player("tal", 26)
-        player2 = Player("amit",26)
+        player = Player("Tal", 26)
+        player2 = Player("Pozniak",26)
         deck = DeckOfCards()
         player.set_hand(deck)
         player2.set_hand(deck)
@@ -74,14 +74,14 @@ class TestPlayer(unittest.TestCase):
 
     def test_get_card_invalid_empty_deck(self):
         with self.assertRaises(ValueError):
-            player = Player("amit", 10)
+            player = Player("Pozniak", 10)
             for i in range(10):
                 player.get_card()
             player.get_card()
 
     def test_add_card_valid(self):
         """valid test cases of add card method"""
-        player=Player("tal",13)
+        player=Player("Tal",13)
         card = self.deck.deal_one()
         for i in range(14):
             self.player.add_card(card)

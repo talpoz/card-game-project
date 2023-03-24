@@ -31,6 +31,7 @@ class TestDeckOfCards(unittest.TestCase):
 
     def test_shuffle_valid(self):
         """test case that check the shuffle cards"""
+        #self.assertEqual(self.deck.cards, self.deck2.cards)
         self.deck.cards_shuffle()
         self.assertNotEqual(self.deck.cards, self.deck2.cards)
 
